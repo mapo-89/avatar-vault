@@ -70,6 +70,22 @@ AvatarVault ist ein self-hosted Avatar-Service. Er funktioniert ähnlich wie Gra
     ```bash
     php artisan migrate
     ```
+4. Laravel Cache aufbauen
+
+    ```bash
+    php artisan config:cache
+    php artisan route:cache
+    php artisan view:cache
+    ```
+## 🚨 Trusted Proxies konfigurieren (optional)
+
+In Laravel ggf. noch die Proxy-IP-Adresse bei den `TrustedProxies` hinzufügen, damit die Anfragen korrekt behandelt werden.
+
+In `bootstrap/trus_proxies.php`
+
+```php
+$middleware->trustProxies('172.18.0.0/16');
+```
 
 ## 🚀 Nutzung
 
