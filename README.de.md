@@ -93,6 +93,14 @@ Diese Datei ggf. aus dem Git Worktree ausschließen
 git update-index --skip-worktree bootstrap/trust_proxies.php
 ```
 
+### 🧪 Optional: Status prüfen
+
+Wenn du prüfen willst, ob eine Datei als `skip-worktree` markiert ist:
+
+```bash
+git ls-files -v | grep ^S
+```
+
 ## 🚀 Nutzung
 
 1. 📇 Benutzer registrieren sich
