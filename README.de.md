@@ -81,10 +81,16 @@ AvatarVault ist ein self-hosted Avatar-Service. Er funktioniert ähnlich wie Gra
 
 In Laravel ggf. noch die Proxy-IP-Adresse bei den `TrustedProxies` hinzufügen, damit die Anfragen korrekt behandelt werden.
 
-In `bootstrap/trus_proxies.php`
+In `bootstrap/trust_proxies.php`
 
 ```php
 $middleware->trustProxies('172.18.0.0/16');
+```
+
+Diese Datei ggf. aus dem Git Worktree ausschließen
+
+```bash
+git update-index --skip-worktree bootstrap/trust_proxies.php
 ```
 
 ## 🚀 Nutzung
