@@ -29,6 +29,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'oidc_sub',
+        'oidc_provider',
+        'oidc_groups',
+        'email_verified_at',
     ];
 
     /**
@@ -62,6 +66,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'oidc_groups' => 'array',
         ];
     }
 }
