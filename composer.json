@@ -11,9 +11,11 @@
         "laravel/framework": "^12.0",
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
+        "laravel/socialite": "^5.23",
         "laravel/tinker": "^2.10.1",
         "livewire/livewire": "^3.0",
-        "mapo-89/laravel-avatar-manager": "^1.0"
+        "mapo-89/laravel-avatar-manager": "^1.0",
+        "socialiteproviders/authentik": "^5.2"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
