@@ -1,14 +1,14 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\AuthentikController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('auth/authentik', [AuthController::class, 'redirectToProvider']);
-Route::get('auth/authentik/callback', [AuthController::class, 'handleProviderCallback']);
+Route::get('auth/authentik', [AuthentikController::class, 'redirectToAuthentik'])->name('authentik.auth');
+Route::get('auth/authentik/callback', [AuthentikController::class, 'handleAuthentikCallback']);
 
 Route::middleware([
     'auth:sanctum',

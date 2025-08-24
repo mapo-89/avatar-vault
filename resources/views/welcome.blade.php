@@ -25,26 +25,33 @@
         </div>
 
         <!-- Authentik Login ähnlich wie Microsoft-Button -->
-        <div class="text-center mt-6">
-            <p class="text-gray-600 mb-3">Oder fortfahren mit:</p>
-            <div class="flex justify-center space-x-4 mb-4">
-                <a href="{{ url('/auth/authentik') }}"
-                   class="btn btn-lg w-48 authentik-button flex items-center justify-center">
-                    <img src="{{ asset('images/authentik.png') }}"
-                         alt="Authentik Logo"
-                         class="mr-2 h-6">
-                    Authentik
-                </a>
+        @if (Route::has('microsoft.auth') || Route::has('authentik.auth'))
+            <div class="text-center mt-6">
+                <p class="text-gray-600 mb-3">Oder fortfahren mit:</p>
+                <div class="flex justify-center space-x-4">
+
+                    @if (Route::has('authentik.auth'))
+                        <a href="{{ url('/auth/authentik') }}"
+                        class="btn btn-lg w-48 authentik-button flex items-center justify-center">
+                            <img src="{{ asset('images/authentik.svg') }}"
+                                alt="Authentik Logo"
+                                class="mr-2 h-6">
+                            Authentik
+                        </a>
+                    @endif
+
+                    @if (Route::has('microsoft.auth'))
+                        <a href="{{ url('/auth/microsoft') }}"
+                        class="btn btn-lg w-48 authentik-button flex items-center justify-center">
+                            <img src="{{ asset('images/microsoft.svg') }}"
+                                alt="Microsoft Logo"
+                                class="mr-2 h-6">
+                            Microsoft
+                        </a>
+                    @endif
+                </div>
             </div>
-            <div class="flex justify-center space-x-4">
-                <a href="{{ url('/auth/authentik') }}"
-                   class="btn btn-lg w-48 authentik-button flex items-center justify-center">
-                    <img src="{{ asset('images/microsoft.svg') }}"
-                         alt="Microsoft Logo"
-                         class="mr-2 h-6">
-                    Microsoft
-                </a>
-            </div>
-        </div>
+        @endif
+
     </div>
 </x-guest-layout>
