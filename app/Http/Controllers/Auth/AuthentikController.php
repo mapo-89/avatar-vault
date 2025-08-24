@@ -25,7 +25,7 @@ class AuthentikController extends Controller
             ],
             [
                 'name' => $socialUser->getName() ?: $socialUser->getNickname(),
-                'password' => bcrypt(uniqid()), // Zufallspasswort, wird nie benutzt
+                'password' => $user->password ?? bcrypt(uniqid()),
                 'oidc_sub' => $socialUser->getId(),
                 'oidc_provider' => 'authentik',
                 'oidc_groups' => $socialUser->user['groups'] ?? [],
