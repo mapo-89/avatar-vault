@@ -30,7 +30,7 @@
                 <p class="text-gray-600 mb-3">Oder fortfahren mit:</p>
                 <div class="flex justify-center space-x-4">
 
-                    @if (Route::has('authentik.auth'))
+                    @if (config('services.authentik.client_id') && config('services.authentik.client_secret'))
                         <a href="{{ url('/auth/authentik') }}"
                         class="btn btn-lg w-48 authentik-button flex items-center justify-center">
                             <img src="{{ asset('images/authentik.svg') }}"
@@ -40,7 +40,7 @@
                         </a>
                     @endif
 
-                    @if (Route::has('microsoft.auth'))
+                    @if (config('services.microsoft.client_id') && config('services.microsoft.client_secret'))
                         <a href="{{ url('/auth/microsoft') }}"
                         class="btn btn-lg w-48 authentik-button flex items-center justify-center">
                             <img src="{{ asset('images/microsoft.svg') }}"
