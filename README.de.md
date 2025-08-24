@@ -14,6 +14,8 @@
     Verwalte und zeige Benutzer-Avatare sicher und einfach an – ähnlich wie Gravatar, aber komplett selbst gehostet.
 </p>
 
+📖 Diese README ist auch auf [🇬🇧 Englisch](README.md) verfügbar.
+
 ## 📚 Inhaltsverzeichnis
 
 - [🔍 Überblick](#-überblick)
@@ -21,6 +23,9 @@
 - [🛠️ Voraussetzungen](#-voraussetzungen)
 - [⚙️ Installation](#-installation)
 - [🛠️ Nutzung](#-nutzung)
+- [🔐 Authentik OIDC Integration](#-authentik-oidc-integration)
+- [🧰 Tech Stack](#-tech-stack)
+- [🧑‍💻 Maintainer](#-maintainer)
 - [📄 Lizenz](#-lizenz)
 
 ## 🔍 Überblick
@@ -106,9 +111,69 @@ git ls-files -v | grep ^S
 1. 📇 Benutzer registrieren sich
 2. 📅 Im Profilbild-Bereich kann ein Avatar hochgeladen werden
 3. 📋 Intern wird das Bild gespeichert und mit dem E-Mail-Hash aufgerufen
-4. 🌐 Partner zu Ausschreibungen einladen
-5. 🔎 Angebote vergleichen und Empfehlungen abgeben
-6. 💰 Abrechnungen über sevDesk automatisieren
+
+## 🔐 Authentik OIDC Integration
+
+AvatarVault unterstützt die Anmeldung über **Authentik** mittels **OIDC / Socialite**.  
+Die Einrichtung erfolgt wie folgt:
+
+### 🛠️ Voraussetzungen
+
+- Authentik Account mit erstellter Application für AvatarVault  
+- Lokale Laravel-Installation mit Socialite & SocialiteProviders/Authentik  
+- Öffentliche URL für Redirect URI (z. B. über Localtunnel)
+
+### 🌐 Localtunnel für lokale Entwicklung
+
+1. Localtunnel installieren:
+
+```bash
+npm install -g localtunnel
+lt --version
+```
+
+2. Laravel-Server starten:
+
+```bash
+php artisan serve
+```
+
+3. Öffentlichen Tunnel starten:
+
+```bash
+lt --port 8000 --subdomain avatarvault
+```
+
+- Die öffentliche URL (z. B. `https://avatarvault.loca.lt`) muss als **Redirect URI** in Authentik eingetragen werden.  
+- **Hinweis:** Falls ein Passwort für den Tunnel erforderlich ist, wird auf [https://loca.lt/mytunnelpassword](https://loca.lt/mytunnelpassword) weiterführende Information gegeben.
+
+### ⚙️ Laravel Konfiguration
+
+In `.env`:
+
+```dotenv
+AUTHENTIK_BASE_URL="https://auth.example.com/"
+AUTHENTIK_CLIENT_ID=""
+AUTHENTIK_CLIENT_SECRET=""
+AUTHENTIK_REDIRECT_URI="http://localhost:8000/callback"
+```
+
+In `config/services.php`:
+
+```php
+'authentik' => [
+    'base_url' => env('AUTHENTIK_BASE_URL'),
+    'client_id' => env('AUTHENTIK_CLIENT_ID'),
+    'client_secret' => env('AUTHENTIK_CLIENT_SECRET'),
+    'redirect' => env('AUTHENTIK_REDIRECT_URI')
+],
+```
+
+### 🔑 Nutzung
+
+- Anmeldung erfolgt über den Link `/auth/authentik`  
+- Nach erfolgreichem Login werden die OIDC-Daten im User-Modell gespeichert (`oidc_sub`, `oidc_provider`, `oidc_groups`)  
+- Die Gruppen können für **Gates / Policies** genutzt werden  
 
 ## 🧰 Tech Stack
 
