@@ -29,23 +29,20 @@
             <div class="text-center mt-6">
                 <p class="text-gray-600 mb-3">Oder fortfahren mit:</p>
                 <div class="flex justify-center space-x-4">
-
+                    {{-- Authentik --}}
                     @if (config('services.authentik.client_id') && config('services.authentik.client_secret'))
-                        <a href="{{ url('/auth/authentik') }}"
+                        <a href="{{ route('auth.redirect', ['provider' => 'authentik']) }}"
                         class="btn btn-lg w-48 authentik-button flex items-center justify-center">
-                            <img src="{{ asset('images/authentik.svg') }}"
-                                alt="Authentik Logo"
-                                class="mr-2 h-6">
+                            <img src="{{ asset('images/authentik.svg') }}" alt="Authentik Logo" class="mr-2 h-6">
                             Authentik
                         </a>
                     @endif
 
+                    {{-- Microsoft --}}
                     @if (config('services.microsoft.client_id') && config('services.microsoft.client_secret'))
-                        <a href="{{ url('/auth/microsoft') }}"
+                        <a href="{{ route('auth.redirect', ['provider' => 'microsoft']) }}"
                         class="btn btn-lg w-48 authentik-button flex items-center justify-center">
-                            <img src="{{ asset('images/microsoft.svg') }}"
-                                alt="Microsoft Logo"
-                                class="mr-2 h-6">
+                            <img src="{{ asset('images/microsoft.svg') }}" alt="Microsoft Logo" class="mr-2 h-6">
                             Microsoft
                         </a>
                     @endif
