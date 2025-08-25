@@ -1,7 +1,7 @@
 <?php
 
 return [
-    App\Domains\Auth\Providers\AuthDomainsServiceProvider::class,
+    App\Domains\Auth\Providers\AuthDomainServiceProvider::class,
     App\Providers\AppServiceProvider::class,
     App\Providers\FortifyServiceProvider::class,
     App\Providers\JetstreamServiceProvider::class,
