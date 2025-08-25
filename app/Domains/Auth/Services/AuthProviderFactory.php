@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Auth\Services;
+namespace App\Domains\Auth\Services;
 
-use App\Domain\Auth\Contracts\AuthProviderInterface;
-use App\Domain\Auth\Providers\AuthentikProvider;
+use App\Domains\Auth\Contracts\AuthProviderInterface;
+use App\Domains\Auth\Providers\AuthentikProvider;
 use InvalidArgumentException;
 
 class AuthProviderFactory

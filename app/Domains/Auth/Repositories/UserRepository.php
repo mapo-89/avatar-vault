@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Auth\Repositories;
+namespace App\Domains\Auth\Repositories;
 
-use App\Domain\Auth\Contracts\UserRepositoryInterface;
+use App\Domains\Auth\Contracts\UserRepositoryInterface;
 use App\Models\User;
 
 class UserRepository implements UserRepositoryInterface

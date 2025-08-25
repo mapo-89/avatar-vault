@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Auth\Providers;
+namespace App\Domains\Auth\Providers;
 
-use App\Domain\Auth\Contracts\AuthProviderInterface;
-use App\Domain\Auth\Contracts\UserRepositoryInterface;
+use App\Domains\Auth\Contracts\AuthProviderInterface;
+use App\Domains\Auth\Contracts\UserRepositoryInterface;
 use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Symfony\Component\HttpFoundation\RedirectResponse;
