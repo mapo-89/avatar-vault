@@ -25,9 +25,7 @@ return [
     'application_path' => 'app/Modules',
     'application_namespace' => 'App\Modules',
     'application_objects' => [
-        'controller',
-        'request',
-        'middleware',
+
     ],
 
     /*
