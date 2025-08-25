@@ -25,7 +25,7 @@
         </div>
 
         <!-- Authentik Login ähnlich wie Microsoft-Button -->
-        @if (Route::has('microsoft.auth') || Route::has('authentik.auth'))
+        @if (config('services.authentik.client_id') || config('services.microsoft.client_id'))
             <div class="text-center mt-6">
                 <p class="text-gray-600 mb-3">Oder fortfahren mit:</p>
                 <div class="flex justify-center space-x-4">
