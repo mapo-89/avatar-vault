@@ -19,23 +19,22 @@ class AuthentikController extends Controller
         $socialUser = Socialite::driver('authentik')->user();
 
         // 2️⃣ Laravel User erstellen/aktualisieren
-        $user = User::updateOrCreate(
-            [
-                'email' => $socialUser->getEmail(), // eindeutiges Feld
-            ],
-            [
-                'name' => $socialUser->getName() ?: $socialUser->getNickname(),
-                'oidc_sub' => $socialUser->getId(),
-                'oidc_provider' => 'authentik',
-                'oidc_groups' => $socialUser->user['groups'] ?? [],
-            ]
+        $user = User::firstOrNew(
+            ['email' => $socialUser->getEmail()]
         );
 
-        // Passwort nur setzen, wenn null
-        if (is_null($user->password)) {
-            $user->password = bcrypt(uniqid());
-            $user->save();
+        if (! $user->exists) {
+            $user->password = bcrypt(uniqid()); // nur beim ersten Mal
         }
+
+        $user->fill([
+            'name' => $socialUser->getName() ?: $socialUser->getNickname(),
+            'oidc_sub' => $socialUser->getId(),
+            'oidc_provider' => 'authentik',
+            'oidc_groups' => $socialUser->user['groups'] ?? [],
+        ]);
+
+        $user->save();
 
         // 3️⃣ Laravel User einloggen
         auth()->login($user, true);
