@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Auth\Controllers;
+namespace App\Domains\Auth\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Domain\Auth\Services\AuthService;
+use App\Domains\Auth\Services\AuthService;
 
 class AuthController extends Controller
 {

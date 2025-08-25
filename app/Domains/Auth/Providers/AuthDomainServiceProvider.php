@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Auth\Providers;
+namespace App\Domains\Auth\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Domain\Auth\Contracts\UserRepositoryInterface;
-use App\Domain\Auth\Repositories\UserRepository;
+use App\Domains\Auth\Contracts\UserRepositoryInterface;
+use App\Domains\Auth\Repositories\UserRepository;
 
 class AuthDomainServiceProvider extends ServiceProvider
 {

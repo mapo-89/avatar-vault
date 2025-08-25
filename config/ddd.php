@@ -10,8 +10,8 @@ return [
     | The path and namespace of the domain layer.
     |
     */
-    'domain_path' => 'app/Domain',
-    'domain_namespace' => 'App\Domain',
+    'domain_path' => 'app/Domains',
+    'domain_namespace' => 'App\Domains',
 
     /*
     |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | The base class which generated domain models should extend. By default,
-    | generated domain models will extend `Domain\Shared\Models\BaseModel`,
+    | generated domain models will extend `Domains\Shared\Models\BaseModel`,
     | which will be created if it doesn't already exist.
     |
     */
@@ -117,11 +117,11 @@ return [
     |--------------------------------------------------------------------------
     |
     | The base class which generated view models should extend. By default,
-    | generated domain models will extend `Domain\Shared\ViewModels\BaseViewModel`,
+    | generated domain models will extend `Domains\Shared\ViewModels\BaseViewModel`,
     | which will be created if it doesn't already exist.
     |
     */
-    'base_view_model' => 'Domain\Shared\ViewModels\ViewModel',
+    'base_view_model' => 'Domains\Shared\ViewModels\ViewModel',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +160,7 @@ return [
     | Folders that should be skipped during autoloading discovery,
     | relative to the root of each domain.
     |
-    | e.g., src/Domain/Invoicing/<folder-to-ignore>
+    | e.g., src/Domains/Invoicing/<folder-to-ignore>
     |
     | If more advanced filtering is needed, a callback can be registered
     | using `DDD::filterAutoloadPathsUsing(callback $filter)` in

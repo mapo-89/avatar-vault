@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Auth\Services;
+namespace App\Domains\Auth\Services;
 
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\RedirectResponse;

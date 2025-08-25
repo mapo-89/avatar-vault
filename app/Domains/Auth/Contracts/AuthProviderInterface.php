@@ -1,5 +1,5 @@
 <?php
-namespace App\Domain\Auth\Contracts;
+namespace App\Domains\Auth\Contracts;
 
 use App\Models\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
