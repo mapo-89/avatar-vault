@@ -1,0 +1,9 @@
+<?php
+namespace App\Domain\Auth\Contracts;
+
+use App\Models\User;
+
+interface UserRepositoryInterface
+{
+    public function findOrCreateFromSocialite(object $socialUser, string $provider): User;
+}
