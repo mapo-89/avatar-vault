@@ -115,10 +115,10 @@ git ls-files -v | grep ^S
 2. 📅 An avatar can be uploaded in the profile picture area
 3. 📋 The image is stored internally and accessed using the email hash
 
-## 🔐 Authentik OIDC integration
+## 🔐 Social Login
 
-AvatarVault supports login via **Authentik** using **OIDC / Socialite**.  
-Setup is as follows:
+AvatarVault supports login via **Authentik** using **OIDC / Socialite**.
+Additional authentication providers can be easily added via a provider-agnostic structure.
 
 ### 🛠️ Requirements
 
@@ -152,7 +152,7 @@ lt --port 8000 --subdomain avatarvault
 
 ### ⚙️ Laravel configuration
 
-In `.env`:
+The login buttons are only displayed if the corresponding credentials are set in `.env`.
 
 ```dotenv
 AUTHENTIK_BASE_URL="https://auth.example.com/"
@@ -177,6 +177,7 @@ In `config/services.php`:
 - Login via the link `/auth/authentik`
 - After successful login, the OIDC data is stored in the user model (`oidc_sub`, `oidc_provider`, `oidc_groups`)
 - The groups can be used for **gates / policies**
+- New providers can be easily activated by adding them to `config/services.php` and `.env`.
 
 ## 🧰 Tech Stack
 
