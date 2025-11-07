@@ -25,6 +25,15 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- Used to add dark mode right away, adding here prevents any flicker -->
+        <script>
+            if (typeof(Storage) !== "undefined") {
+                if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                    document.documentElement.classList.add('dark');
+                }
+            }
+        </script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-200/80 dark:bg-gray-900/40 dark:border-gray-200/[15%]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -19,6 +19,10 @@
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <!-- Dark-Mode Toggle -->
+                <div class="hidden w-[38px] h-[38px] overflow-hidden rounded-full sm:block" x-cloak>
+                    <x-light-dark-switch></x-light-dark-switch>
+                </div>
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="ms-3 relative">

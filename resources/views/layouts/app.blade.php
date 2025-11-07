@@ -25,6 +25,15 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <!-- Used to add dark mode right away, adding here prevents any flicker -->
+        <script>
+            if (typeof(Storage) !== "undefined") {
+                if(localStorage.getItem('dark_mode') && localStorage.getItem('dark_mode') == 'true'){
+                    document.documentElement.classList.add('dark');
+                }
+            }
+        </script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -39,7 +48,7 @@
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white shadow">
+                <header class="mb-5 bg-white border-b border-gray-200/80 dark:border-gray-200/10 dark:bg-gray-900/40">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
